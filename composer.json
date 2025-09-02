@@ -1,0 +1,80 @@
+{
+  "name": "sirix/twig-vite-extension",
+  "description": "Inject your vite entry points into twig templates with easy.",
+  "license": "MIT",
+  "type": "library",
+  "keywords": [
+    "vite",
+    "twig",
+    "extension"
+  ],
+  "authors": [
+    {
+      "name": "Sirix",
+      "email": "sirix@inbox.lv"
+    }
+  ],
+  "require": {
+    "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
+    "sirix/sirix-config": "^1.0"
+  },
+  "require-dev": {
+    "ergebnis/composer-normalize": "2.46",
+    "laminas/laminas-diactoros": "^3.6.0",
+    "localheinz/diff": "^1.0",
+    "mezzio/mezzio-template": "^2.11",
+    "phpunit/phpunit": "^10.5 || ^11.5",
+    "psr/container": "^1.0 || ^2.0",
+    "twig/twig": "^3.21"
+  },
+  "autoload": {
+    "psr-4": {
+      "Sirix\\TwigViteExtension\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "TwigViteExtensionTest\\": "test/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "ergebnis/composer-normalize": true
+    },
+    "sort-packages": true
+  },
+  "extra": {
+    "laminas": {
+      "config-provider": "Sirix\\TwigViteExtension\\ConfigProvider"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "if [ ! -d \"tools/php-cs-fixer/vendor\" ]; then composer install --working-dir=tools/php-cs-fixer; fi",
+      "if [ ! -d \"tools/phpstan/vendor\" ]; then composer install --working-dir=tools/phpstan; fi",
+      "if [ ! -d \"tools/rector/vendor\" ]; then composer install --working-dir=tools/rector; fi"
+    ],
+    "post-update-cmd": [
+      "@tools-update"
+    ],
+    "check": [
+      "@cs-check",
+      "@rector",
+      "@phpstan",
+      "@test"
+    ],
+    "cs-check": "php tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --dry-run -vvv --diff",
+    "cs-fix": "php tools/php-cs-fixer/vendor/bin/php-cs-fixer fix -vvv",
+    "phpstan": "php tools/phpstan/vendor/bin/phpstan analyse -c phpstan.neon --memory-limit=2G",
+    "rector": "php tools/rector/vendor/bin/rector process --dry-run --memory-limit=2G",
+    "test": "phpunit --colors=always  --testdox",
+    "tools-update": [
+      "@tools-update-csfix",
+      "@tools-update-phpstan",
+      "@tools-update-rector"
+    ],
+    "tools-update-csfix": "composer update -W --working-dir=tools/php-cs-fixer",
+    "tools-update-phpstan": "composer update -W --working-dir=tools/phpstan",
+    "tools-update-rector": "composer update -W --working-dir=tools/rector"
+  }
+}
