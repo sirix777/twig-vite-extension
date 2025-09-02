@@ -30,7 +30,10 @@ class ConfigProvider
      * To add a bit of a structure, each section is defined in a separate
      * method which returns an array with its configuration.
      *
-     * @return array{dependencies: array{invokables: array<class-string, class-string>|array<empty, empty>, factories: array<class-string, array{class-string, string}|class-string>}}
+     * @return array{
+     *     dependencies: array{invokables: array<class-string, class-string>|array<empty, empty>,
+     *     factories: array<class-string, array{class-string, string}|class-string>}
+     *     }
      */
     public function __invoke(): array
     {
@@ -42,7 +45,10 @@ class ConfigProvider
     /**
      * Returns the container dependencies.
      *
-     * @return array{invokables: array<class-string, class-string>|array<empty, empty>, factories: array<class-string, array{class-string, string}|class-string>}
+     * @return array{
+     *     invokables: array<class-string, class-string>|array<empty, empty>,
+     *     factories: array<class-string, array{class-string, string}|class-string>
+     *         }
      */
     public function getDependencies(): array
     {
