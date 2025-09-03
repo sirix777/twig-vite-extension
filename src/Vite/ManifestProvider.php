@@ -20,9 +20,9 @@ final class ManifestProvider
     public function __construct(private readonly ViteOptions $viteOptions)
     {
         if (! $this->viteOptions->isDevMode) {
-            $outDir = $this->viteOptions->viteOutDir ?? '';
-            if (file_exists($outDir . self::MANIFEST_FILE_URI)) {
-                $content = file_get_contents($outDir . self::MANIFEST_FILE_URI) ?: '';
+            $buildDir = $this->viteOptions->viteBuildDir ?? '';
+            if (file_exists($buildDir . self::MANIFEST_FILE_URI)) {
+                $content = file_get_contents($buildDir . self::MANIFEST_FILE_URI) ?: '';
                 $this->manifest = '' !== $content ? (array) json_decode($content, true) : [];
             }
         }

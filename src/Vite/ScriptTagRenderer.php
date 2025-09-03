@@ -31,7 +31,7 @@ final class ScriptTagRenderer
         if ($entry && isset($entry['file'])) {
             $tags[] = sprintf(
                 '<script type="module" src="%s"></script>',
-                $this->viteOptions->viteOutDir . '/' . ltrim((string) $entry['file'], '/')
+                $this->viteOptions->publicBase() . '/' . ltrim((string) $entry['file'], '/')
             );
         }
 
@@ -41,7 +41,7 @@ final class ScriptTagRenderer
                 if ($importEntry && isset($importEntry['file'])) {
                     $tags[] = sprintf(
                         '<link rel="modulepreload" href="%s">',
-                        $this->viteOptions->viteOutDir . '/' . ltrim((string) $importEntry['file'], '/')
+                        $this->viteOptions->publicBase() . '/' . ltrim((string) $importEntry['file'], '/')
                     );
                 }
             }

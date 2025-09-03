@@ -8,7 +8,13 @@ final class ViteOptions
 {
     public function __construct(
         public readonly bool $isDevMode = false,
-        public readonly ?string $viteOutDir = 'public/build',
-        public readonly ?string $devServer = 'http://localhost:5173'
+        public readonly ?string $viteBuildDir = 'public/build',
+        public readonly ?string $devServer = 'http://localhost:5173',
+        public readonly ?string $vitePublicBase = 'build',
     ) {}
+
+    public function publicBase(): string
+    {
+        return $this->vitePublicBase ?? ($this->viteBuildDir ?? '');
+    }
 }

@@ -22,7 +22,7 @@ final class AssetResolver
         $entry = $this->manifestProvider->getEntry($path);
 
         return $entry && isset($entry['file'])
-            ? ($this->viteOptions->viteOutDir ?? '') . '/' . ltrim((string) $entry['file'], '/')
+            ? $this->viteOptions->publicBase() . '/' . ltrim((string) $entry['file'], '/')
             : $path;
     }
 }

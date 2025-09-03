@@ -28,7 +28,7 @@ final class CssTagRenderer
         foreach ($entry['css'] as $cssFile) {
             $tags[] = sprintf(
                 '<link rel="stylesheet" href="%s">',
-                $this->viteOptions->viteOutDir . '/' . ltrim((string) $cssFile, '/')
+                $this->viteOptions->publicBase() . '/' . ltrim((string) $cssFile, '/')
             );
         }
 
