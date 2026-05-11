@@ -9,9 +9,9 @@ use function is_array;
 use function ltrim;
 use function sprintf;
 
-final class CssTagRenderer
+final readonly class CssTagRenderer
 {
-    public function __construct(private readonly ManifestProvider $manifestProvider, private readonly ViteOptions $viteOptions) {}
+    public function __construct(private ManifestProvider $manifestProvider, private ViteOptions $viteOptions) {}
 
     public function render(string $entryPoint): string
     {

@@ -19,7 +19,7 @@ Composer:
 composer require sirix/twig-vite-extension
 ```
 
-Requirements: PHP 8.1+.
+Requirements: PHP 8.2 - 8.5.
 
 Note on public vs filesystem paths:
 - Set `vite_build_dir` to where Vite writes the build on disk (e.g., `public/build`).

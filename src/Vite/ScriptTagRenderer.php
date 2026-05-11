@@ -10,9 +10,9 @@ use function ltrim;
 use function rtrim;
 use function sprintf;
 
-final class ScriptTagRenderer
+final readonly class ScriptTagRenderer
 {
-    public function __construct(private readonly ManifestProvider $manifestProvider, private readonly ViteOptions $viteOptions) {}
+    public function __construct(private ManifestProvider $manifestProvider, private ViteOptions $viteOptions) {}
 
     public function render(string $entryPoint): string
     {

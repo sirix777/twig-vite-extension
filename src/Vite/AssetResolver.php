@@ -7,9 +7,9 @@ namespace Sirix\TwigViteExtension\Vite;
 use function ltrim;
 use function rtrim;
 
-final class AssetResolver
+final readonly class AssetResolver
 {
-    public function __construct(private readonly ManifestProvider $manifestProvider, private readonly ViteOptions $viteOptions) {}
+    public function __construct(private ManifestProvider $manifestProvider, private ViteOptions $viteOptions) {}
 
     public function resolve(string $path): string
     {
