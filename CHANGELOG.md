@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.1] - 11/05/2026
+## [1.0.1] - 2026-05-11
 ### Added
 - Add support for PHP 8.5.
 - Introduce `bamarni/composer-bin-plugin` for isolated development tool management.
@@ -20,7 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - Drop support for PHP 8.1.
 
-## [1.0.0] - 03/09/2025
+## [1.0.0] - 2025-09-03
 - Add initial public README with installation, configuration, and usage docs.
 - Provide Twig functions: `vite_entry_script_tags()`, `vite_entry_link_tags()` and `vite_asset` for dev/prod.
 - Add Mezzio (Laminas) integration via `ConfigProvider` and factories.
@@ -28,5 +28,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add renderers for JS and CSS tags in production build.
 - Provide comprehensive PHPUnit tests and tooling (PHP-CS-Fixer, PHPStan, Rector).
 
-## [0.1.0] - 02/09/2025
+## [0.1.0] - 2025-09-02
 - Initial release of Twig Vite Extension.
