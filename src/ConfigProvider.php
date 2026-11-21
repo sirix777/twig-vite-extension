@@ -54,13 +54,13 @@ class ConfigProvider
     {
         return [
             'invokables' => [],
-            'factories' => [
-                AssetResolver::class => AssetResolverFactory::class,
-                CssTagRenderer::class => CssTagRendererFactory::class,
-                ManifestProvider::class => ManifestProviderFactory::class,
+            'factories'  => [
+                AssetResolver::class     => AssetResolverFactory::class,
+                CssTagRenderer::class    => CssTagRendererFactory::class,
+                ManifestProvider::class  => ManifestProviderFactory::class,
                 ScriptTagRenderer::class => ScriptTagRendererFactory::class,
-                ViteExtension::class => ViteExtensionFactory::class,
-                ViteOptions::class => [ValinorConfigFactory::class, 'config.vite.options'],
+                ViteExtension::class     => ViteExtensionFactory::class,
+                ViteOptions::class       => [ValinorConfigFactory::class, 'config.vite.options'],
             ],
         ];
     }

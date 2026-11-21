@@ -20,7 +20,7 @@ class CssTagRendererFactory
     public function __invoke(ContainerInterface $container): CssTagRenderer
     {
         $manifestProvider = $container->get(ManifestProvider::class);
-        $viteOptions = $container->get(ViteOptions::class);
+        $viteOptions      = $container->get(ViteOptions::class);
 
         return new CssTagRenderer(
             $manifestProvider,

@@ -17,7 +17,7 @@ final class ManifestProviderTest extends TestCase
 {
     public function testGetEntryReturnsNullInDevMode(): void
     {
-        $options = TestViteOptionsFactory::dev('http://localhost:5173/');
+        $options  = TestViteOptionsFactory::dev('http://localhost:5173/');
         $provider = new ManifestProvider($options);
 
         self::assertNull($provider->getEntry('resources/js/app.ts'));
@@ -26,8 +26,8 @@ final class ManifestProviderTest extends TestCase
     public function testGetEntryReturnsManifestEntryInProd(): void
     {
         $buildBase = __DIR__ . '/../Resource/build';
-        $options = TestViteOptionsFactory::prod($buildBase);
-        $provider = new ManifestProvider($options);
+        $options   = TestViteOptionsFactory::prod($buildBase);
+        $provider  = new ManifestProvider($options);
 
         $entry = $provider->getEntry('resources/js/app.ts');
 
@@ -39,8 +39,8 @@ final class ManifestProviderTest extends TestCase
     public function testGetEntryReturnsNullWhenEntryMissing(): void
     {
         $buildBase = __DIR__ . '/../Resource/build';
-        $options = TestViteOptionsFactory::prod($buildBase);
-        $provider = new ManifestProvider($options);
+        $options   = TestViteOptionsFactory::prod($buildBase);
+        $provider  = new ManifestProvider($options);
 
         self::assertNull($provider->getEntry('unknown/entry.js'));
     }
@@ -52,7 +52,7 @@ final class ManifestProviderTest extends TestCase
         // Ensure directory exists but without .vite/manifest.json
         mkdir($tempDir, 0o777, true);
 
-        $options = TestViteOptionsFactory::prod($tempDir);
+        $options  = TestViteOptionsFactory::prod($tempDir);
         $provider = new ManifestProvider($options);
 
         // Should behave as empty manifest
@@ -66,7 +66,7 @@ final class ManifestProviderTest extends TestCase
         mkdir($viteDir, 0o777, true);
         file_put_contents($viteDir . '/manifest.json', '{invalid json');
 
-        $options = TestViteOptionsFactory::prod($tempDir);
+        $options  = TestViteOptionsFactory::prod($tempDir);
         $provider = new ManifestProvider($options);
 
         // json_decode will return null, cast to array gives empty array, so no entries

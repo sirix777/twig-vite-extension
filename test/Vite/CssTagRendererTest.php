@@ -14,7 +14,7 @@ final class CssTagRendererTest extends TestCase
 {
     public function testRenderReturnsEmptyStringInDevMode(): void
     {
-        $options = TestViteOptionsFactory::dev('http://localhost:5173/');
+        $options  = TestViteOptionsFactory::dev('http://localhost:5173/');
         $manifest = new ManifestProvider(new ViteOptions(false)); // not used in dev mode
 
         $renderer = new CssTagRenderer($manifest, $options);
@@ -25,8 +25,8 @@ final class CssTagRendererTest extends TestCase
     public function testRenderReturnsLinkTagsForCssInProd(): void
     {
         $buildBase = __DIR__ . '/../Resource/build';
-        $options = TestViteOptionsFactory::prod($buildBase);
-        $manifest = new ManifestProvider($options);
+        $options   = TestViteOptionsFactory::prod($buildBase);
+        $manifest  = new ManifestProvider($options);
 
         $renderer = new CssTagRenderer($manifest, $options);
 
@@ -40,8 +40,8 @@ final class CssTagRendererTest extends TestCase
     {
         // Point to a build directory without a manifest entry for this file
         $buildBase = __DIR__ . '/../Resource/build';
-        $options = TestViteOptionsFactory::prod($buildBase);
-        $manifest = new ManifestProvider($options);
+        $options   = TestViteOptionsFactory::prod($buildBase);
+        $manifest  = new ManifestProvider($options);
 
         $renderer = new CssTagRenderer($manifest, $options);
 

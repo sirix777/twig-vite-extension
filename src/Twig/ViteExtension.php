@@ -21,8 +21,12 @@ final class ViteExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('vite_entry_link_tags', $this->cssRenderer->render(...), ['is_safe' => ['html']]),
-            new TwigFunction('vite_entry_script_tags', $this->scriptRenderer->render(...), ['is_safe' => ['html']]),
+            new TwigFunction('vite_entry_link_tags', $this->cssRenderer->render(...), [
+                'is_safe' => ['html'],
+            ]),
+            new TwigFunction('vite_entry_script_tags', $this->scriptRenderer->render(...), [
+                'is_safe' => ['html'],
+            ]),
             new TwigFunction('vite_asset', $this->assetResolver->resolve(...)),
         ];
     }

@@ -39,8 +39,8 @@ final class ViteExtensionTest extends TestCase
         self::assertArrayHasKey('vite_asset', $byName);
 
         // Check is_safe options for html on link and script using TwigFunction::getSafe()
-        $dummyArgs = new Node();
-        $safeLink = $byName['vite_entry_link_tags']->getSafe($dummyArgs) ?? [];
+        $dummyArgs  = new Node();
+        $safeLink   = $byName['vite_entry_link_tags']->getSafe($dummyArgs) ?? [];
         $safeScript = $byName['vite_entry_script_tags']->getSafe($dummyArgs) ?? [];
         self::assertContains('html', $safeLink);
         self::assertContains('html', $safeScript);
@@ -54,25 +54,25 @@ final class ViteExtensionTest extends TestCase
         $ext = $this->createRealExtensionForProd();
 
         $functions = $ext->getFunctions();
-        $byName = [];
+        $byName    = [];
         foreach ($functions as $fn) {
             $byName[$fn->getName()] = $fn;
         }
 
-        $linkCallable = $byName['vite_entry_link_tags']->getCallable();
+        $linkCallable   = $byName['vite_entry_link_tags']->getCallable();
         $scriptCallable = $byName['vite_entry_script_tags']->getCallable();
-        $assetCallable = $byName['vite_asset']->getCallable();
+        $assetCallable  = $byName['vite_asset']->getCallable();
 
-        $entry = 'resources/js/app.ts';
+        $entry     = 'resources/js/app.ts';
         $buildBase = __DIR__ . '/../Resource/build';
 
         self::assertIsCallable($linkCallable);
         self::assertIsCallable($scriptCallable);
         self::assertIsCallable($assetCallable);
 
-        $expectedLink = '<link rel="stylesheet" href="' . $buildBase . '/assets/app-DeVvsBrP.css">';
+        $expectedLink   = '<link rel="stylesheet" href="' . $buildBase . '/assets/app-DeVvsBrP.css">';
         $expectedScript = '<script type="module" src="' . $buildBase . '/assets/app-CfeQlW6r.js"></script>';
-        $expectedAsset = $buildBase . '/assets/app-CfeQlW6r.js';
+        $expectedAsset  = $buildBase . '/assets/app-CfeQlW6r.js';
 
         self::assertSame($expectedLink, $linkCallable($entry));
         self::assertSame($expectedScript, $scriptCallable($entry));
@@ -85,7 +85,7 @@ final class ViteExtensionTest extends TestCase
     private function createRealExtensionForProd(): ViteExtension
     {
         $viteOptions = TestViteOptionsFactory::prod(__DIR__ . '/../Resource/build');
-        $manifest = new ManifestProvider($viteOptions);
+        $manifest    = new ManifestProvider($viteOptions);
 
         return new ViteExtension(
             new CssTagRenderer($manifest, $viteOptions),

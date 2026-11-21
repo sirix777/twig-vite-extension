@@ -25,7 +25,7 @@ final readonly class ScriptTagRenderer
             ]);
         }
 
-        $tags = [];
+        $tags  = [];
         $entry = $this->manifestProvider->getEntry($entryPoint);
 
         if ($entry && isset($entry['file'])) {

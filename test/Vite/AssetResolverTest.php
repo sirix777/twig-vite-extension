@@ -24,7 +24,7 @@ final class AssetResolverTest extends TestCase
         self::assertSame('http://localhost:5173/src/main.ts', $resolver->resolve('/src/main.ts'));
         self::assertSame('http://localhost:5173/src/main.ts', $resolver->resolve('src/main.ts'));
 
-        $options2 = TestViteOptionsFactory::dev();
+        $options2  = TestViteOptionsFactory::dev();
         $resolver2 = new AssetResolver($manifest, $options2);
         self::assertSame('http://localhost:5173/src/main.ts', $resolver2->resolve('/src/main.ts'));
     }
@@ -32,12 +32,12 @@ final class AssetResolverTest extends TestCase
     public function testResolveReturnsBuiltFileFromManifestInProd(): void
     {
         $buildBase = __DIR__ . '/../Resource/build';
-        $options = TestViteOptionsFactory::prod($buildBase);
-        $manifest = new ManifestProvider($options);
+        $options   = TestViteOptionsFactory::prod($buildBase);
+        $manifest  = new ManifestProvider($options);
 
         $resolver = new AssetResolver($manifest, $options);
 
-        $entry = 'resources/js/app.ts';
+        $entry  = 'resources/js/app.ts';
         $result = $resolver->resolve($entry);
 
         self::assertSame($buildBase . '/assets/app-CfeQlW6r.js', $result);
@@ -46,8 +46,8 @@ final class AssetResolverTest extends TestCase
     public function testResolveFallsBackToOriginalPathWhenMissingInManifest(): void
     {
         $buildBase = __DIR__ . '/../Resource/build';
-        $options = TestViteOptionsFactory::prod($buildBase);
-        $manifest = new ManifestProvider($options);
+        $options   = TestViteOptionsFactory::prod($buildBase);
+        $manifest  = new ManifestProvider($options);
 
         $resolver = new AssetResolver($manifest, $options);
 

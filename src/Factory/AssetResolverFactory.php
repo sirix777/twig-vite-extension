@@ -20,7 +20,7 @@ class AssetResolverFactory
     public function __invoke(ContainerInterface $container): AssetResolver
     {
         $manifestProvider = $container->get(ManifestProvider::class);
-        $viteOptions = $container->get(ViteOptions::class);
+        $viteOptions      = $container->get(ViteOptions::class);
 
         return new AssetResolver(
             $manifestProvider,
