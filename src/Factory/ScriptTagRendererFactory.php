@@ -20,7 +20,7 @@ class ScriptTagRendererFactory
     public function __invoke(ContainerInterface $container): ScriptTagRenderer
     {
         $manifestProvider = $container->get(ManifestProvider::class);
-        $viteOptions = $container->get(ViteOptions::class);
+        $viteOptions      = $container->get(ViteOptions::class);
 
         return new ScriptTagRenderer(
             $manifestProvider,

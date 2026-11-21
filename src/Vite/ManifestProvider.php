@@ -10,7 +10,7 @@ use function json_decode;
 
 final class ManifestProvider
 {
-    private const MANIFEST_FILE_URI = '/.vite/manifest.json';
+    private const string MANIFEST_FILE_URI = '/.vite/manifest.json';
 
     /**
      * @var array<string, array<string, mixed>>
@@ -22,7 +22,7 @@ final class ManifestProvider
         if (! $this->viteOptions->isDevMode) {
             $buildDir = $this->viteOptions->viteBuildDir ?? '';
             if (file_exists($buildDir . self::MANIFEST_FILE_URI)) {
-                $content = file_get_contents($buildDir . self::MANIFEST_FILE_URI) ?: '';
+                $content        = file_get_contents($buildDir . self::MANIFEST_FILE_URI) ?: '';
                 $this->manifest = '' !== $content ? (array) json_decode($content, true) : [];
             }
         }

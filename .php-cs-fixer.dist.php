@@ -9,7 +9,7 @@ return ConfigBuilder::create()
     ->inDir(__DIR__ . '/src')
     ->inDir(__DIR__ . '/test')
     ->setRules([
-        '@PHP8x2Migration' => true,
+        '@PHP8x3Migration' => true,
         'PedroTroller/line_break_between_method_arguments' => [
             'max-args' => 4,
             'max-length' => 140,
@@ -20,5 +20,6 @@ return ConfigBuilder::create()
         'php_unit_test_class_requires_covers' => false,
         'php_unit_internal_class' => false,
     ])
-    ->getConfig();
+    ->getConfig()
+    ->setUnsupportedPhpVersionAllowed(true);
 

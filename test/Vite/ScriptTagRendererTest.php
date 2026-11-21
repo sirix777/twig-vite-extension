@@ -21,7 +21,7 @@ final class ScriptTagRendererTest extends TestCase
 {
     public function testRenderDevModeOutputsViteClientAndEntryModule(): void
     {
-        $options = TestViteOptionsFactory::dev('http://localhost:5173/');
+        $options  = TestViteOptionsFactory::dev('http://localhost:5173/');
         $manifest = new ManifestProvider(new ViteOptions(false)); // not used in dev mode
 
         $renderer = new ScriptTagRenderer($manifest, $options);
@@ -39,8 +39,8 @@ final class ScriptTagRendererTest extends TestCase
     public function testRenderProdModeRendersEntryScriptTag(): void
     {
         $buildBase = __DIR__ . '/../Resource/build';
-        $options = TestViteOptionsFactory::prod($buildBase);
-        $manifest = new ManifestProvider($options);
+        $options   = TestViteOptionsFactory::prod($buildBase);
+        $manifest  = new ManifestProvider($options);
 
         $renderer = new ScriptTagRenderer($manifest, $options);
 
@@ -57,8 +57,8 @@ final class ScriptTagRendererTest extends TestCase
         $viteDir = $tempDir . '/.vite';
         mkdir($viteDir, 0o777, true);
         $manifest = [
-            'main.ts' => [
-                'file' => 'assets/main-ABC.js',
+            'main.ts'   => [
+                'file'    => 'assets/main-ABC.js',
                 'imports' => ['vendor.ts'],
             ],
             'vendor.ts' => [
@@ -67,7 +67,7 @@ final class ScriptTagRendererTest extends TestCase
         ];
         file_put_contents($viteDir . '/manifest.json', json_encode($manifest));
 
-        $options = TestViteOptionsFactory::prod($tempDir);
+        $options  = TestViteOptionsFactory::prod($tempDir);
         $provider = new ManifestProvider($options);
         $renderer = new ScriptTagRenderer($provider, $options);
 
@@ -84,8 +84,8 @@ final class ScriptTagRendererTest extends TestCase
     public function testRenderProdModeHandlesMissingEntryGracefully(): void
     {
         $buildBase = __DIR__ . '/../Resource/build';
-        $options = TestViteOptionsFactory::prod($buildBase);
-        $manifest = new ManifestProvider($options);
+        $options   = TestViteOptionsFactory::prod($buildBase);
+        $manifest  = new ManifestProvider($options);
 
         $renderer = new ScriptTagRenderer($manifest, $options);
 

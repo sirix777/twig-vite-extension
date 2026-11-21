@@ -20,9 +20,9 @@ class ViteExtensionFactory
      */
     public function __invoke(ContainerInterface $container): ViteExtension
     {
-        $cssRenderer = $container->get(CssTagRenderer::class);
+        $cssRenderer    = $container->get(CssTagRenderer::class);
         $scriptRenderer = $container->get(ScriptTagRenderer::class);
-        $assetResolver = $container->get(AssetResolver::class);
+        $assetResolver  = $container->get(AssetResolver::class);
 
         return new ViteExtension(
             $cssRenderer,
